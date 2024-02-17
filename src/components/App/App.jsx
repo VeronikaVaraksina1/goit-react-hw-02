@@ -7,7 +7,7 @@ import Notification from '../Notification/Notification';
 const App = () => {
   const [feedback, setFeedback] = useState(() => {
     const savedFeedbacks = window.localStorage.getItem('saved-feedbacks');
-    if (savedFeedbacks !== 0) {
+    if (savedFeedbacks !== null) {
       return JSON.parse(savedFeedbacks);
     }
     return {
@@ -33,6 +33,7 @@ const App = () => {
   };
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+
   const positiveFeedback = Math.round(
     ((feedback.good + feedback.neutral) / totalFeedback) * 100
   );
