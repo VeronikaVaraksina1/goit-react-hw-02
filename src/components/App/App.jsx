@@ -6,14 +6,14 @@ import Notification from '../Notification/Notification';
 
 const App = () => {
   const [feedback, setFeedback] = useState(() => {
-    const savedFeedback = window.localStorage.getItem('saved-feedbacks');
+    const savedFeedback = window.localStorage.getItem('saved-feedback');
     return savedFeedback !== null
       ? JSON.parse(savedFeedback)
       : { good: 0, neutral: 0, bad: 0 };
   });
 
   useEffect(() => {
-    window.localStorage.setItem('saved-feedbacks', JSON.stringify(feedback));
+    window.localStorage.setItem('saved-feedback', JSON.stringify(feedback));
   }, [feedback]);
 
   const updateFeedback = feedbackType => {
