@@ -4,7 +4,7 @@ import Options from '../Options/Options';
 import Feedback from '../Feedback/Feedback';
 import Notification from '../Notification/Notification';
 
-export default function App() {
+const App = () => {
   const [feedback, setFeedback] = useState(() => {
     const savedFeedbacks = window.localStorage.getItem('saved-feedbacks');
     if (savedFeedbacks !== 0) {
@@ -55,4 +55,6 @@ export default function App() {
       <Notification total={totalFeedback} />
     </>
   );
-}
+};
+
+export default App;
