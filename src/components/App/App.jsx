@@ -28,8 +28,12 @@ export default function App() {
     });
   };
 
+  const resetFeedback = () => {
+    setFeedback({ good: 0, neutral: 0, bad: 0 });
+  };
+
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-  const positiveFeedbacks = Math.round(
+  const positiveFeedback = Math.round(
     ((feedback.good + feedback.neutral) / totalFeedback) * 100
   );
 
@@ -37,18 +41,18 @@ export default function App() {
     <>
       <Description />
       <Options
-        onUpdateFeedback={updateFeedback}
-        onUpdate={setFeedback}
-        totalFeedback={totalFeedback}
+        onUpdate={updateFeedback}
+        onReset={resetFeedback}
+        total={totalFeedback}
       />
       <Feedback
         good={feedback.good}
         neutral={feedback.neutral}
         bad={feedback.bad}
-        totalFeedback={totalFeedback}
-        positiveFeedbacks={positiveFeedbacks}
+        total={totalFeedback}
+        positive={positiveFeedback}
       />
-      <Notification totalFeedback={totalFeedback} />
+      <Notification total={totalFeedback} />
     </>
   );
 }

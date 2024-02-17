@@ -1,22 +1,24 @@
-export default function Options({ onUpdateFeedback, onUpdate, totalFeedback }) {
+import css from './Options.module.css';
+
+const Options = ({ onUpdate, onReset, total }) => {
   return (
     <>
-      <button onClick={() => onUpdateFeedback('good')}>Good</button>
-      <button onClick={() => onUpdateFeedback('neutral')}>Neutral</button>
-      <button onClick={() => onUpdateFeedback('bad')}>Bad</button>
-      {totalFeedback > 0 && (
-        <button
-          onClick={() =>
-            onUpdate({
-              good: 0,
-              neutral: 0,
-              bad: 0,
-            })
-          }
-        >
+      <button className={css.button} onClick={() => onUpdate('good')}>
+        Good
+      </button>
+      <button className={css.button} onClick={() => onUpdate('neutral')}>
+        Neutral
+      </button>
+      <button className={css.button} onClick={() => onUpdate('bad')}>
+        Bad
+      </button>
+      {total > 0 && (
+        <button className={css.button} onClick={onReset}>
           Reset
         </button>
       )}
     </>
   );
-}
+};
+
+export default Options;
